@@ -5,6 +5,9 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\support\Str;
+use Illuminate\Support\Facades\Validator;
+
 
 class ProjectController extends Controller
 {
@@ -28,7 +31,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -39,7 +42,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $formData = $request->all();
+
+        $this->validation($formData);
+        
+        $newProject = new Project();
+        $newProject->fill($formData);
+        $newProject->slug = Str::slug($newProject->name);
+
+        $newProject->save();
+
+        return redirect()->route('admin.projects.show', ['project' => $newProject->id]);
     }
 
     /**
@@ -48,9 +61,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
-        //
+        return  view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -59,9 +72,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -71,9 +84,18 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        //
+        $formData = $request->all();
+
+        $this->validation($formData);
+        
+        $project->fill($formData);
+        $project->slug = Str::slug($project->name);
+
+        $project->update();
+
+        return redirect()->route('admin.projects.show', ['project' => $project->id]);
     }
 
     /**
@@ -82,8 +104,21 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
+    }
+
+    private function validation($data) {
+        $validator = Validator::Make(
+            $data,
+            [
+                'name'=> 'required|min:5|max:50',
+                'summary' => 'min:15|max:2000',
+                'client_name' => 'required'
+            ]
+        )->validate();
+        return $validator;
     }
 }

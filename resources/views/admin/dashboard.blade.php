@@ -19,7 +19,7 @@
 
                     {{ __('You are logged in!') }}
 
-                    <div>Benvenuto {{ $user->name}}!</div>
+                    <div>Benvenuto {{ $user->name }}!</div>
                     <div>Ti sei loggato con l'e-mail: {{ $user->email }}</div>
                 </div>
             </div>
