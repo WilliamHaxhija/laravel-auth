@@ -26,9 +26,9 @@
         </div>
         <div>
             <a href="{{ route('admin.projects.index') }}">Torna alla lista</a>
-            <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Edit</a>
+            <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">Edit</a>
         </div>
-        <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="POST">
+        <form action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}" method="POST">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Delete</button>

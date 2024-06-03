@@ -17,9 +17,9 @@
                 <strong>Slug: </strong>{{$project->slug}}
             </div>
             <div>
-                <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">Info</a>
-                <a href="{{ route('admin.projects.edit', ['project' => $project->id]) }}">Edit</a>
-                <form action="{{ route('admin.projects.destroy', ['project' => $project->id]) }}" method="POST">
+                <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">Info</a>
+                <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}">Edit</a>
+                <form action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger">Delete</button>
