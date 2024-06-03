@@ -1,6 +1,13 @@
 @extends('layouts.admin')
 
 @section('content')
+    <div>
+        @if (session()->has('message'))
+            <div class="alert alert-danger">
+                {{ session('message') }}
+            </div>
+        @endif
+    </div>
     <h1>Lista Progetti</h1>
     @foreach ($projects as $project)
         <div class="my-5">
@@ -8,13 +15,13 @@
                 <strong>ID: </strong>{{ $project->id }}
             </div>
             <div>
-                <strong>Name: </strong>{{$project->name}}
+                <strong>Name: </strong>{{ $project->name }}
             </div>
             <div>
-                <strong>Client Name: </strong>{{$project->client_name}}
+                <strong>Client Name: </strong>{{ $project->client_name }}
             </div>
             <div>
-                <strong>Slug: </strong>{{$project->slug}}
+                <strong>Slug: </strong>{{ $project->slug }}
             </div>
             <div>
                 <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">Info</a>

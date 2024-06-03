@@ -8,21 +8,21 @@
 
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Project Name</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="name">
+            <input type="text" class="form-control" id="exampleInputPassword1" name="name" value="{{ old('name') }}">
             @error('name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
             <label for="exampleInput" class="form-label">Client Name</label>
-            <input type="text" class="form-control" id="exampleInput" name="client_name">
+            <input type="text" class="form-control" id="exampleInput" name="client_name" value="{{ old('client_name') }}">
             @error('client_name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
 
-            <div class="form-floating mt-4">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="summary"
-                    style="height: 100px"></textarea>
+            <div class="mt-4">
                 <label for="floatingTextarea2">Summary </label>
+                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" name="summary"
+                    style="height: 100px">{{ old('summary') }}</textarea>
                 @error('summary')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

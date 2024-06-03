@@ -52,6 +52,8 @@ class ProjectController extends Controller
 
         $newProject->save();
 
+        session()->flash('message', $newProject->name . ' successfully created.');
+
         return redirect()->route('admin.projects.show', ['project' => $newProject->slug]);
     }
 
@@ -95,6 +97,8 @@ class ProjectController extends Controller
 
         $project->update();
 
+        session()->flash('message', $project->name . ' successfully updated.');
+
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
@@ -107,7 +111,10 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        
+        // session()->flash('message', $project->name . ' successfully deleted.');
+
+        return redirect()->route('admin.projects.index')->with('message', $project->name . ' successfully deleted.');
     }
 
     private function validation($data) {
