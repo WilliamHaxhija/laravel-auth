@@ -8,7 +8,7 @@
             </div>
         @endif
     </div>
-    <h1 class="my-3">Lista Progetti</h1>
+    <h2 class="my-3">Projects</h2>
     <table class="table table-striped table-hover">
         <thead>
             <tr>

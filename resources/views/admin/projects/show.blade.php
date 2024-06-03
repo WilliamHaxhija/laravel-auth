@@ -9,7 +9,7 @@
         @endif
     </div>
     <div>
-        <h2>
+        <h2 class="my-3">
             {{ $project->name }}
         </h2>
         <div>
