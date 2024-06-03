@@ -32,7 +32,7 @@
             <p>{{ $project->summary }}</p>
         </div>
         <div class="d-flex">
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true"><i class="fa-solid fa-table-list"></i></a>
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true"><i class="fa-regular fa-rectangle-list"></i></a>
             <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}" class="btn btn-secondary btn-sm mx-2" tabindex="-1" role="button" aria-disabled="true"><i class="fa-solid fa-pen-to-square"></i></a>
             <form action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}" method="POST">
                 @csrf

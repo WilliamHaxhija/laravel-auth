@@ -29,6 +29,6 @@
             </div>
         </div>
         <button type="submit" class="btn btn-success"><i class="fa-regular fa-floppy-disk"></i></button>
-        <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true"><i class="fa-solid fa-table-list"></i></a>
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-primary btn-sm" tabindex="-1" role="button" aria-disabled="true"><i class="fa-regular fa-rectangle-list"></i></a>
     </form>
 @endsection
