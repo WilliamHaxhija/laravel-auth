@@ -27,6 +27,12 @@
         <div>
             <strong>Slug: </strong>{{ $project->slug }}
         </div>
+        @if ($project->cover_image)
+            <div class="w-75 my-3">
+                <strong>Image:</strong>
+                <img class="w-100" src="{{ asset('storage/'. $project->cover_image) }}" alt="{{ $project->name }}">    
+            </div>    
+        @endif
         <div>
             <strong>Summary: </strong>
             <p>{{ $project->summary }}</p>

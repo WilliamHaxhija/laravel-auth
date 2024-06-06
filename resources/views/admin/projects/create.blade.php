@@ -3,7 +3,7 @@
 @section('content')
     <h2 class="my-3">Create a new Project</h2>
 
-    <form action="{{ route('admin.projects.store') }}" method="POST">
+    <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
@@ -18,6 +18,11 @@
             @error('client_name')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
+
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Image</label>
+                <input class="form-control" type="file" id="formFile" name="cover_image">
+            </div>
 
             <div class="mt-4">
                 <label for="floatingTextarea2">Summary </label>
